@@ -486,7 +486,7 @@
                         <h1>Software</h1>
                     </div>
                 </div>
-                <div class="row filter-container">
+                <div class="row m-t-md m-b-xl">
                     <div class="col-xs-12 col-md-left-affix-container">
                         <div class="filter">
                             <div class="filter-header">
@@ -532,55 +532,55 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!--<div class="filter-footer col-xs-12 hidden-sm hidden-xs">
-                                <button type="button" class="btn btn-default btn-sm">Clear Filters</button>
+                            <div class="filter-footer col-xs-12">
+                                <button type="button" class="btn btn-default btn-sm hidden-sm hidden-xs">Clear Filters</button>
                                 <button
                                         type="button"
                                         class="btn btn-default btn-sm hidden-sm hidden-xs"
                                         @click="clearFilters"
                                 >Clear Filters</button>
-                            </div>-->
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-right">
                         <div class="">
                             <table class="table table-fixed">
                                 <thead>
-                                <tr>
-                                    <th class="col-xs-1 col-lg-2 software-t-col-1">Logo</th>
-                                    <th class="col-xs-3">Software</th>
-                                    <th class="col-xs-3">Category</th>
-                                    <th class="col-xs-3">Company</th>
-                                    <th class="col-xs-1">US$/Hour</th>
-                                </tr>
+                                    <tr>
+                                        <th class="col-xs-1 col-lg-2 software-t-col-1">Logo</th>
+                                        <th class="col-xs-3">Software</th>
+                                        <th class="col-xs-3">Category</th>
+                                        <th class="col-xs-3">Company</th>
+                                        <th class="col-xs-1">US$/Hour</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="(app, index) in filteredApps">
-                                    <tr :class="{odd: index % 2}" class="">
-                                        <td class="col-xs-1 col-lg-2 software-t-col-1" rowspan="2"><img :src="app.image" class="img-responsive product-logo" alt=""></td>
-                                        <td class="col-xs-3">${app.title}</td>
-                                        <td class="col-xs-3">${app.software}</a></td>
-                                        <td class="col-xs-3"><a :href="app.website" target="_blank">${app.company}</td>
-                                        <td class="col-xs-1">${app.price|price}</td>
-                                    </tr>
-                                    <tr :class="{odd: index % 2}" class="">
-                                        <td colspan="3" class="col-xs-3 description">
-                                            ${app.description} &nbsp;
-                                            <a :href="app.info_link" target="_blank">more info &nbsp;<i class="fa fa-external-link" aria-hidden="true" ></i></a>
-                                        </td>
-                                        <td></td>
-                                        <!--<td>
-                                            <a  v-if="app.info_link"
-                                                target="_blank"
-                                                :href="app.info_link">link</a>
-                                            <span v-else>-</span>
-                                        </td>
-                                        <td>
-                                            <a :href="app.website">more info</a>
-                                            <span v-else>-</span>
-                                        </td>-->
-                                    </tr>
-                                </template>
+                                    <template v-for="(app, index) in filteredApps">
+                                        <tr :class="{odd: index % 2}" class="">
+                                            <td class="col-xs-1 col-lg-2 software-t-col-1" rowspan="2"><img :src="app.image" class="img-responsive product-logo" alt=""></td>
+                                            <td class="col-xs-3">${app.title}</td>
+                                            <td class="col-xs-3">${app.software}</a></td>
+                                            <td class="col-xs-3"><a :href="app.website" target="_blank">${app.company}</td>
+                                            <td class="col-xs-1">${app.price|price}</td>
+                                        </tr>
+                                        <tr :class="{odd: index % 2}" class="">
+                                            <td colspan="3" class="col-xs-3 description">
+                                                ${app.description} &nbsp;
+                                                <a :href="app.info_link" target="_blank">more info &nbsp;<i class="fa fa-external-link" aria-hidden="true" ></i></a>
+                                            </td>
+                                            <td></td>
+                                            <!--<td>
+                                                <a  v-if="app.info_link"
+                                                    target="_blank"
+                                                    :href="app.info_link">link</a>
+                                                <span v-else>-</span>
+                                            </td>
+                                            <td>
+                                                <a :href="app.website">more info</a>
+                                                <span v-else>-</span>
+                                            </td>-->
+                                        </tr>
+                                    </template>
                                 </tbody>
                             </table>
                         </div>
@@ -600,9 +600,8 @@
                     <div><img src="img/brands/bundle_adjustment-w.png" class="bundle_adjustment-w" alt=""></div>
                     <div><img src="img/brands/ic_logo-w.png" alt="" class="ic_logo-w"></div>
                     <div><img src="img/brands/logo-racurs-w.png" alt="" class="logo-racurs-w"></div>
-                    <div><img src="img/brands/acute3D_Logo.png" alt="" class="acute3D_Logo"></div>
-                    <div><img src="img/brands/tatukGIS_logo_new.png" alt="" class="tatukGIS_logo_new"></div>
-                    <div><img src="img/brands/qgis_trademark.png" alt="" class="qgis_trademark"></div>
+                    <div><img src="img/brands/super-map-logo-w.png" alt="" class="super-map-logo-w"></div>
+                    <div><img src="img/brands/super-map-logo-w.png" alt="" class="super-map-logo-w"></div>
                 </div>
             </div>
         </div>
@@ -709,17 +708,17 @@
                                 Currently Yuri holds the positions of CEO of GeoCloud and Chief Scientist of PhaseOne Industrial – both companies are active in the GeoInformation field.
                             </p>
                             <p>
-                                Prior to GeoCloud, from 2008 until 2017, Yuri served as VP EMEA and Chief Scientist at VisionMap. From 1992 until 2008, he served as Chief of Photogrammetry and Remote Sensing and National GIS Manager at the Survey of Israel (SOI), and as a guest lecturer at the Israel Institute of Technology.  He is also a member of the editorial boards of several journals in the field of Geodesy and Geoinformation.
+                            Prior to GeoCloud, from 2008 until 2017, Yuri served as VP EMEA and Chief Scientist at VisionMap. From 1992 until 2008, he served as Chief of Photogrammetry and Remote Sensing and National GIS Manager at the Survey of Israel (SOI), and as a guest lecturer at the Israel Institute of Technology.  He is also a member of the editorial boards of several journals in the field of Geodesy and Geoinformation.
                             </p>
                             <p>
-                                Yuri has over 30 years of experience in photogrammetry, aerial survey, mapping, GIS, standardization, mapping and GIS products development. He published more than 100 articles on aerial survey, photogrammetry, GIS and standardization, and prepared
-                                more than 20 national technical instructions, standards, and specifications.
+                            Yuri has over 30 years of experience in photogrammetry, aerial survey, mapping, GIS, standardization, mapping and GIS products development. He published more than 100 articles on aerial survey, photogrammetry, GIS and standardization, and prepared
+                            more than 20 national technical instructions, standards, and specifications.
                             </p>
                             <p>
-                                He is Vice President of ILSPRS (Israel Society of Photogrammetry & Remote Sensing), a member of IIAC (ISPRS Industry Advisory Committee), and a member of ALSI (Association of Licensed Surveyors in Israel). He served as chairman in the Commission on the GIS Standardization of the Standards Institution of Israel, the Standardization Group of the Inter Ministry Commission on Geoinformation, and the Commission on the Technical Standards and Specifications for Photogrammetry and Topographic Mapping in the Survey of Israel.
+                            He is Vice President of ILSPRS (Israel Society of Photogrammetry & Remote Sensing), a member of IIAC (ISPRS Industry Advisory Committee), and a member of ALSI (Association of Licensed Surveyors in Israel). He served as chairman in the Commission on the GIS Standardization of the Standards Institution of Israel, the Standardization Group of the Inter Ministry Commission on Geoinformation, and the Commission on the Technical Standards and Specifications for Photogrammetry and Topographic Mapping in the Survey of Israel.
                             </p>
                             <p>
-                                Yuri holds a Master’s degree in aerial survey and photogrammetry from Moscow State University of Geodesy and Cartography (MIIGAiK), and a Ph.D. in photogrammetry from the Moscow State Research Institute of Geodesy, Aerial Survey, and Cartography (CNIIGaiK).
+                            Yuri holds a Master’s degree in aerial survey and photogrammetry from Moscow State University of Geodesy and Cartography (MIIGAiK), and a Ph.D. in photogrammetry from the Moscow State Research Institute of Geodesy, Aerial Survey, and Cartography (CNIIGaiK).
                             </p>
 
                             <ul class="list-inline social-icon">
@@ -842,23 +841,29 @@
 
         $('.filter-body-1').slimScroll({
             position: 'right',
-            alwaysVisible: true,
-            height: '290px'
+            alwaysVisible: true
         });
         $('.filter-body-2').slimScroll({
             position: 'right',
-            alwaysVisible: true,
-            height: '290px'
+            alwaysVisible: true
         });
         $('tbody').slimScroll({
             position: 'right',
             alwaysVisible: true,
-            height: '700px'
-
+            height: '670px'
         });
         $('.filter .list-unstyled li label').on('click', function () {
+//            console.log('dfgg');
             $('tbody').mouseover();
         });
+       /* $('.filter .list-unstyled li .icheckbox_sq.uare-blue').on('click', function () {
+            console.log('jhkh');
+            $('tbody').mouseover();
+        });*/
+       /* $('.slimScrollDiv').on('click', function () {
+            console.log('jhkh');
+            $('tbody').mouseover();
+        });*/
 
         // Page scrolling feature
         $('a.page-scroll').bind('click', function (event) {
@@ -888,7 +893,7 @@
             speed: 1000,
             slidesToShow: 5,
             slidesToScroll: 1,
-//            autoplay: true,
+            autoplay: true,
             autoplaySpeed: 5000,
             responsive: [
                 {
@@ -919,6 +924,11 @@
                 }
             ]
         });
+
+        /*$('.btn-clear-f').on('click', function(){
+         $("input[type='checkbox']").prop('checked',false)
+         console.log('fdfg');
+         });*/
 
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
@@ -952,9 +962,6 @@
             bodyHtml.removeClass("noscroll");
             if ($(window).width() < 991) {
                 filterBody.css('display', 'none');
-                $(window).scroll(function () {
-                    fixedFilter();
-                });
             }
         }
 
@@ -970,7 +977,9 @@
             }
         }
 
-
+        $(window).scroll(function () {
+//            fixedFilter();
+        });
 
         caretOpenFilter.click(function() {
             filterBody.toggle("slide");

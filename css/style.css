@@ -93,7 +93,7 @@ h1 {
 .navy-line {
   width: 60px;
   height: 1px;
-  margin: 40px auto 0;
+  margin: 25px auto 0;
   border-bottom: 2px solid #0094e7;
 }
 .navy-line-sm {
@@ -484,6 +484,11 @@ fieldset[disabled] .btn-primary.active {
   }
   .featurette-heading {
     font-size: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .navy-line {
+    margin: 40px auto 0;
   }
 }
 @media (max-width: 991px) {
@@ -1049,6 +1054,7 @@ fieldset[disabled] .btn-primary.active {
 }
 .overview .flex-container img {
   max-height: 590px;
+  margin: auto;
 }
 .overview .wwc h2 {
   position: relative;
@@ -1139,10 +1145,10 @@ a.link-to-software {
   position: relative;
 }
 .col-md-left-affix-container .filter-fixed {
-  position: fixed;
+  position: absolute;
   left: 15px;
   right: 15px;
-  top: 51px;
+  top: 0;
   margin: auto;
   background-color: #fff;
   z-index: 1;
@@ -1163,7 +1169,7 @@ a.link-to-software {
   padding: 0;
 }
 .col-md-right.top-padding {
-  padding-top: 62px;
+  padding-top: 38px;
 }
 .col-md-right .table {
   border-left: none;
@@ -1172,7 +1178,7 @@ a.link-to-software {
   margin-top: 7px;
 }
 .col-md-right .table .product-logo {
-  width: 77px;
+  width: 57px;
   margin: auto;
 }
 .col-md-right .table .fa-external-link {
@@ -1207,7 +1213,7 @@ a.link-to-software {
   width: 100%;
 }
 .table-fixed tbody {
-  height: 650px;
+  height: 700px;
   overflow-y: auto;
   width: 100%;
 }
@@ -1239,7 +1245,7 @@ a.link-to-software {
   .col-md-left-affix-container .filter-fixed {
     top: 51px;
     right: inherit;
-    position: fixed;
+    position: static;
     left: inherit;
     overflow: auto;
     bottom: 0;
@@ -1327,6 +1333,10 @@ a.link-to-software {
     background-size: 240px 24px;
   }
 }
+.filter-container {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .filter {
   overflow: auto;
   z-index: 1;
@@ -1343,7 +1353,7 @@ a.link-to-software {
 }
 .filter .filter-header h3,
 .filter .filter-footer h3 {
-  margin: 13px 0 6px;
+  margin: 7px 0;
   cursor: pointer;
   line-height: 30px;
 }
@@ -1375,7 +1385,6 @@ a.link-to-software {
   border-bottom: 1px solid #ddd;
   display: none;
   overflow: hidden;
-  padding-bottom: 15px;
   position: absolute;
   background-color: #fff;
   z-index: 1;
@@ -1383,8 +1392,12 @@ a.link-to-software {
   right: 15px;
 }
 .filter .filter-body .list-unstyled {
-  max-height: 230px;
+  max-height: 290px;
   overflow-y: auto;
+  margin-bottom: 0;
+}
+.filter .filter-body .list-unstyled .slimScrollBar {
+  z-index: 100;
 }
 .filter h4 {
   margin: 25px 0 16px;
@@ -1398,6 +1411,10 @@ a.link-to-software {
   cursor: pointer;
 }
 @media (min-width: 992px) {
+  /*.filter-container {
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }*/
   .filter {
     border-bottom: 0;
     padding: 0 15px 20px 0;
@@ -1658,7 +1675,7 @@ a.link-to-software {
   opacity: 0;
 }
 .container-brands-carousel {
-  height: 150px;
+  height: 130px;
   background-color: #003169;
   background-image: url("../img/bg.jpg");
   color: #fff;
@@ -1689,30 +1706,37 @@ a.link-to-software {
   margin: auto;
 }
 .container-brands-carousel img.bundle_adjustment-w {
-  max-height: 65px;
-  margin-top: 9px;
+  max-height: 55px;
 }
 .container-brands-carousel img.super-map-logo-w {
-  max-height: 75px;
-  margin-top: 7px;
+  max-height: 30px;
+  margin-top: 11px;
 }
 .container-brands-carousel img.agisoft_logo-w {
-  max-height: 68px;
+  max-height: 34px;
   margin-top: 14px;
 }
 .container-brands-carousel img.ic_logo-w {
-  max-height: 99px;
-  margin-top: 0;
+  max-height: 30px;
+  margin-top: 16px;
 }
 .container-brands-carousel img.logo-racurs-w {
-  margin-top: 17px;
-  max-height: 65px;
+  max-height: 41px;
+  margin-top: 11px;
+}
+.container-brands-carousel img.acute3D_Logo {
+  max-height: 34px;
+  margin-top: 14px;
+}
+.container-brands-carousel img.tatukGIS_logo_new {
+  max-height: 51px;
+}
+.container-brands-carousel img.qgis_trademark {
+  max-height: 41px;
+  margin-top: 11px;
 }
 .container-brands-carousel .slick-list {
   opacity: 0.95;
-}
-.container-brands-carousel .slick-dots {
-  bottom: 5px;
 }
 .container-brands-carousel .slick-dots li {
   margin: 0;
@@ -1725,7 +1749,7 @@ a.link-to-software {
 }
 .container-brands-carousel .slick-prev,
 .container-brands-carousel .slick-next {
-  top: 24%;
+  top: 37%;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
