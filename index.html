@@ -19,8 +19,6 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
 </head>
 <body id="page-top">
 
@@ -355,8 +353,8 @@
                         <h1>GeoCloud.Shop provides you</h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 wow fadeInLeft animated m-t-lg" style="visibility: visible; animation-name: fadeInLeft;">
+                <div class="row wow fadeInDown animated ">
+                    <div class="col-md-4 m-t-lg" style="visibility: visible; animation-name: fadeInLeft;">
                         <h2><a href="#" class="navy-link">Geospatial Professionals</a></h2>
                         <ul class="">
                             <li>Reduction or elimination of  investment in office computers and IT support</li>
@@ -366,7 +364,7 @@
                             <li>Support and up-to-date software included</li>
                         </ul>
                     </div>
-                    <div class="col-md-4 wow fadeIn animated  m-t-lg" style="visibility: visible; animation-name: fadeIn;">
+                    <div class="col-md-4 m-t-lg" style="visibility: visible; animation-name: fadeIn;">
                         <h2><a href="#" class="navy-link">Software Developers</a></h2>
                         <ul class="elements-list">
                             <li>New additional channel for software sales</li>
@@ -377,7 +375,7 @@
                             <li>Digital platform for traditional pre-sale efforts</li>
                         </ul>
                     </div>
-                    <div class="col-md-4 wow fadeInRight animated  m-t-lg" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="col-md-4 m-t-lg" style="visibility: visible; animation-name: fadeInRight;">
                         <h2><a href="#" class="navy-link">Geodata Providers</a></h2>
                         <ul class="elements-list">
                             <li>Collaboration platform with different software developers and data users</li>
@@ -399,7 +397,7 @@
                     </div>
                 </div>
 
-                <div class="flex-container wow fadeInLeft animated">
+                <div class="flex-container wow fadeInUp animated">
                     <div class="col-md-6">
                         <div class="text-point-r">
                             <h2>Unified and Convenient Approach</h2>
@@ -414,7 +412,7 @@
                     </div>
                 </div>
 
-                <div class="flex-container flex-container-revert wow fadeInRight animated">
+                <div class="flex-container flex-container-revert wow fadeInUp animated">
                     <div class="col-md-6 text-point-l">
                         <h2>Direct Approach</h2>
                         <p>A direct approach to free and pay-per-use GeoData</p>
@@ -426,7 +424,7 @@
                     </div>
                 </div>
 
-                <div class="flex-container wow fadeInLeft animated">
+                <div class="flex-container wow fadeInUp animated">
                     <div class="col-md-6">
                         <div class="text-point-r">
                             <h2>Scalable and Always Available</h2>
@@ -440,7 +438,7 @@
                     </div>
                 </div>
 
-                <div class="flex-container flex-container-revert wow fadeInRight animated">
+                <div class="flex-container flex-container-revert wow fadeInUp animated">
                     <div class="col-md-6">
                         <div class="text-point-l">
                             <h2>Pay-per-Use model</h2>
@@ -454,7 +452,7 @@
                     </div>
                 </div>
 
-                <div class="flex-container wow fadeInLeft animated">
+                <div class="flex-container wow fadeInUp animated">
                     <div class="col-md-6">
                         <div class="text-point-r">
                             <h2>Collaboration point</h2>
@@ -468,7 +466,7 @@
                     </div>
                 </div>
 
-                <div class="wow fadeIn animated">
+                <div class="wow fadeInUp animated">
                     <div class="col-xs-12">
                         <div class="text-center wwc">
                             <h2>Worldwide Cloud Based Infrastructure</h2>
@@ -503,7 +501,7 @@
                             <div class="filter-body" id="filters">
                                 <div class="col-xs-12 col-sm-6 col-md-12">
                                     <h4>Companies</h4>
-                                    <ul class="list-unstyled">
+                                    <ul class="list-unstyled filter-body-1">
                                         <li v-for="(company, index) in companies">
                                             <input
                                                     type="checkbox"
@@ -519,7 +517,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-12">
                                     <h4>Categories</h4>
-                                    <ul class="list-unstyled">
+                                    <ul class="list-unstyled filter-body-2">
                                         <li v-for="(category, index) in categories">
                                             <input
                                                     type="checkbox"
@@ -546,29 +544,29 @@
                     </div>
                     <div class="col-xs-12 col-md-right">
                         <div class="">
-                            <table class="table table-responsive">
+                            <table class="table table-fixed">
                                 <thead>
                                     <tr>
-                                        <th>Logo</th>
-                                        <th>Software</th>
-                                        <th>Category</th>
-                                        <th>Company</th>
-                                        <th>US$/Hour</th>
+                                        <th class="col-xs-2">Logo</th>
+                                        <th class="col-xs-3">Software</th>
+                                        <th class="col-xs-3">Category</th>
+                                        <th class="col-xs-3">Company</th>
+                                        <th class="col-xs-1">US$/Hour</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <template v-for="(app, index) in filteredApps">
-                                        <tr :class="{odd: index % 2}">
-                                            <td rowspan="2"><img :src="app.image" class="img-responsive product-logo" alt=""></td>
-                                            <td>${app.title}</td>
-                                            <td>${app.software}</a></td>
-                                            <td><a :href="app.website">${app.company}</td>
-                                            <td>${app.price|price}</td>
+                                        <tr :class="{odd: index % 2}" class="row">
+                                            <td class="col-xs-2 software-t-col-1" rowspan="2"><img :src="app.image" class="img-responsive product-logo" alt=""></td>
+                                            <td class="col-xs-3">${app.title}</td>
+                                            <td class="col-xs-3">${app.software}</a></td>
+                                            <td class="col-xs-3"><a :href="app.website" target="_blank">${app.company}</td>
+                                            <td class="col-xs-1">${app.price|price}</td>
                                         </tr>
-                                        <tr :class="{odd: index % 2}">
+                                        <tr :class="{odd: index % 2}" class="row">
                                             <td colspan="3" class="description">
-                                                ${app.description}
-                                                <a :href="app.info_link">&nbsp; more info <i class="fa fa-external-link" aria-hidden="true" ></i></a>
+                                                ${app.description} &nbsp;
+                                                <a :href="app.info_link" target="_blank"><i class="fa fa-external-link" aria-hidden="true" ></i></a>
                                             </td>
                                             <td></td>
                                             <!--<td>
@@ -597,10 +595,12 @@
             </div>
             <div class="container-fluid">
                 <div class="brands-carousel">
+                    <div><img src="img/brands/super-map-logo-w.png" alt="" class="super-map-logo-w"></div>
                     <div><img src="img/brands/agisoft_logo-w.png" alt="" class="agisoft_logo-w"></div>
                     <div><img src="img/brands/bundle_adjustment-w.png" class="bundle_adjustment-w" alt=""></div>
                     <div><img src="img/brands/ic_logo-w.png" alt="" class="ic_logo-w"></div>
                     <div><img src="img/brands/logo-racurs-w.png" alt="" class="logo-racurs-w"></div>
+                    <div><img src="img/brands/super-map-logo-w.png" alt="" class="super-map-logo-w"></div>
                     <div><img src="img/brands/super-map-logo-w.png" alt="" class="super-map-logo-w"></div>
                 </div>
             </div>
@@ -615,7 +615,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 wow fadeInLeft animated text-center">
+                    <div class="col-md-12 wow fadeInUp animated text-center">
                         <div class="m-t-sm m-b-xl">
                             <span class="coming-soon">Coming soon.</span>
                             <!--<div class="table-responsive">
@@ -679,7 +679,7 @@
                     </div>
                 </div>
                 <div class="row text-center m-t-sm">
-                    <div class="col-xs-12 wow fadeInLeft animated">
+                    <div class="col-xs-12 wow fadeInUp animated">
                         <img src="img/Workflow_Image.jpg" alt="" class="img-responsive">
                         <p class="bottom-text m-t-sm">Simple and straightforward workflow</p>
                     </div>
@@ -695,13 +695,13 @@
                         <h1>Management Team</h1>
                     </div>
                 </div>
-                <div class="row m-b-lg">
-                    <div class="col-sm-5 wow fadeInLeft animated m-b-lg">
+                <div class="row m-b-lg wow fadeInUp animated">
+                    <div class="col-sm-5 m-b-lg">
                         <div class="team-member-photo">
                             <img src="img/team-member-photo-1.jpg" class="img-responsive" alt="">
                         </div>
                     </div>
-                    <div class="col-sm-7 wow fadeInLeft animated">
+                    <div class="col-sm-7">
                         <div class="team-member">
                             <h4><span class="navy">Dr. Yuri Raizman | CEO & co-founder</span></h4>
                             <p>
@@ -765,8 +765,8 @@
                         <h1>Contact Us</h1>
                     </div>
                 </div>
-                <div class="row m-b-lg text-center">
-                    <div class="col-md-3 wow fadeInLeft animated">
+                <div class="row m-b-lg wow fadeInUp animated text-center">
+                    <div class="col-md-3">
                         <address>
                             <h4><strong><span class="navy">GeoCloud Ltd.</span></strong><br></h4>
                             Tel-Aviv <br>
@@ -779,13 +779,13 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-3 wow fadeIn animated">
+                    <div class="col-md-3">
                         <h4>Privacy policy</h4>
                         <p class="text-color">
 
                         </p>
                     </div>
-                    <div class="col-md-3 wow fadeIn animated">
+                    <div class="col-md-3">
                         <h4>Terms of use</h4>
                         <p class="">
                             <!--Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis,
@@ -793,7 +793,7 @@
                             totam corporis ea,-->
                         </p>
                     </div>
-                    <div class="col-md-3 wow fadeInRight animated">
+                    <div class="col-md-3">
                         <h4>Contact</h4>
                         <p class="">
                             <!--Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis,
@@ -823,12 +823,11 @@
 <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 <!-- Custom and plugin javascript -->
-<!--<script src="js/inspinia.js"></script>-->
-<script src="js/plugins/pace/pace.min.js"></script>
 <script src="js/plugins/wow/wow.min.js"></script>
 
 <script src="js/plugins/iCheck/icheck.min.js"></script>
 <script src="js/plugins/slick/slick.min.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 
 <script>
@@ -839,6 +838,32 @@
             target: '.navbar-fixed-top',
             offset: 80
         });
+
+        $('.filter-body-1').slimScroll({
+            position: 'right',
+            alwaysVisible: true
+        });
+        $('.filter-body-2').slimScroll({
+            position: 'right',
+            alwaysVisible: true
+        });
+        $('tbody').slimScroll({
+            position: 'right',
+            alwaysVisible: true,
+            height: '650px'
+        });
+        $('.filter .list-unstyled li label').on('click', function () {
+//            console.log('dfgg');
+            $('tbody').mouseover();
+        });
+       /* $('.filter .list-unstyled li .icheckbox_sq.uare-blue').on('click', function () {
+            console.log('jhkh');
+            $('tbody').mouseover();
+        });*/
+       /* $('.slimScrollDiv').on('click', function () {
+            console.log('jhkh');
+            $('tbody').mouseover();
+        });*/
 
         // Page scrolling feature
         $('a.page-scroll').bind('click', function (event) {
@@ -859,17 +884,22 @@
 
         }
 
+        setTimeout(function(){
+            $('.brands-carousel').animate({opacity: 1}, 300);
+        }, 500);
+
         $('.brands-carousel').slick({
             dots: true,
-            speed: 300,
+            speed: 1000,
             slidesToShow: 5,
-            slidesToScroll: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
             responsive: [
                 {
                     breakpoint: 992,
                     settings: {
                         slidesToShow: 4,
-                        slidesToScroll: 4,
                         infinite: true,
                         dots: true
                     }
@@ -877,22 +907,19 @@
                 {
                     breakpoint: 820,
                     settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
+                        slidesToShow: 3
                     }
                 },
                 {
                     breakpoint: 600,
                     settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToShow: 2
                     }
                 },
                 {
                     breakpoint: 480,
                     settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToShow: 1
                     }
                 }
             ]

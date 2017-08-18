@@ -1,3 +1,9 @@
+/* +Table styles */
+.software {
+  h1 {
+    margin-bottom: 0;
+  }
+}
 a.link-to-software {
   text-decoration:none;
   float: right;
@@ -38,16 +44,14 @@ a.link-to-software {
   &.top-padding {
     padding-top: 62px; //filter header height
   }
-  .table-responsive {
+  .table {
     border-left: none;
     margin-left: 0;
-  }
-  .table {
     background-color: #fff;
-    margin-left: 0;
     margin-top: 7px;
     .product-logo {
       width: 77px;
+      margin: auto;
     }
     .fa-external-link {
       font-size: 10px;
@@ -58,8 +62,51 @@ a.link-to-software {
     tr.odd {
       background-color: #f9f9f9;
     }
+    &>tbody>tr>td {
+      border: 0;
+    }
+    tbody {
+      tr {
+
+        border-bottom: 1px solid #ddd;
+      }
+      tr:nth-child(odd) {
+        //color: red;
+        //border-bottom: 2px solid #fff;
+        border-bottom: 0;
+        &.odd {
+          //border-bottom: 2px solid #f9f9f9;
+        }
+      }
+      .software-t-col-1 {
+        //border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+      }
+    }
   }
 }
+.table-fixed{
+  width: 100%;
+  tbody{
+    height:650px;
+    overflow-y:auto;
+    width: 100%;
+  }
+  tbody, thead, thead tr{
+    display: block;
+  }
+  thead {
+    tr{
+      border-bottom: 1px solid #ddd;
+      background-color: #f9f9f9;
+      th{
+        //float:left;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
 @media (min-width:768px) {
   .filter-fixed {
     width: 720px;
@@ -95,14 +142,15 @@ a.link-to-software {
     &.top-padding {
       padding-top: 0;
     }
-    .table-responsive {
+    .table {
       border-left: 1px solid #ddd;
       margin-left: -1px;
-    }
-    .table {
       padding-left: 15px;
       display: inline-block;
-      max-height: 850px;
+      margin-bottom: 0;
+      .software-t-col-1 {
+        min-width: 147px; // products logo can be smaller sizes and if chosen one -> table row smaller than 100%
+      }
     }
   }
 }
