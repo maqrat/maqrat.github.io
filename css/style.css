@@ -1135,6 +1135,9 @@ a.link-to-software {
 .data table tr {
   height: 31px;
 }
+.software .table-mobile {
+  display: none;
+}
 .software h1 {
   margin-bottom: 0;
 }
@@ -1289,6 +1292,21 @@ a.link-to-software {
     min-width: 100px;
   }
 }
+@media (max-width: 767px) {
+  .software table {
+    display: none;
+  }
+  .software .table-mobile {
+    max-height: 675px;
+  }
+  .software .table-mobile .product {
+    margin: 0px 0 30px;
+  }
+  .software .table-mobile .product .product-logo {
+    max-width: 70px;
+    margin: 20px 0 5px;
+  }
+}
 /* iCheck plugin Square skin, blue
 ----------------------------------- */
 .icheckbox_square-blue,
@@ -1414,6 +1432,7 @@ a.link-to-software {
   z-index: 100;
   left: 15px;
   right: 15px;
+  max-height: auto;
   max-height: 682px;
   margin-bottom: 0;
 }
@@ -1715,6 +1734,7 @@ a.link-to-software {
   color: #fff;
   background-size: cover;
   background-position: top;
+  margin-top: -5px;
 }
 .container-brands-carousel > .container-fluid {
   max-width: 1170px;
@@ -1791,6 +1811,11 @@ a.link-to-software {
 @media (max-width: 500px) {
   .container-brands-carousel .carousel-caption h1 {
     font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .container-brands-carousel {
+    margin-top: 0;
   }
 }
 @media (min-width: 1200px) {
