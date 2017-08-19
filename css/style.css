@@ -1227,8 +1227,7 @@ a.link-to-software {
   width: 100%;
 }
 .table-fixed tbody,
-.table-fixed thead,
-.table-fixed thead tr {
+.table-fixed thead {
   display: block;
 }
 .table-fixed thead tr {
