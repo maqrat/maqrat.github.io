@@ -486,7 +486,7 @@
                         <h1>Software</h1>
                     </div>
                 </div>
-                <div class="row filter-container">
+                <div class="row software-container">
                     <div class="col-xs-12 col-md-left-affix-container">
                         <div class="filter">
                             <div class="filter-header hidden-lg hidden-md">
@@ -854,15 +854,17 @@
             offset: 80
         });
 
+        //slimScroll
+
         $('.filter-body-1').slimScroll({
             position: 'right',
-            alwaysVisible: true,
-            height: '260px'
+            height: '260px',
+            alwaysVisible: true
         });
         $('.filter-body-2').slimScroll({
             position: 'right',
-            alwaysVisible: true,
-            height: '325px'
+            height: '325px',
+            alwaysVisible: true
         });
         $('tbody').slimScroll({
             position: 'right',
@@ -893,6 +895,7 @@
 
         }
 
+        //brands-carousel slick
         setTimeout(function(){
             $('.brands-carousel').animate({opacity: 1}, 300);
         }, 500);
@@ -948,6 +951,8 @@
             increaseArea: '20%' // optional
         });
 
+
+        //Filter position
         var filterBody = $('.filter-body');
         var caretOpenFilter = $('.filter-header h3 i');
         var bodyHtml = $("body");
@@ -955,7 +960,7 @@
         var rTableCol = $('.col-md-right');
         var topOffset = $('.navbar').outerHeight() + $('.container-brands-carousel').outerHeight() + $('.navy-line').outerHeight() + $('.software h1').outerHeight();
 
-        function filterOpenScroll() {
+        /*function filterOpenScroll() {
             if(caretOpenFilter.hasClass("open") && filter.hasClass("filter-fixed")) {
                 filterBody.addClass('filter-body-scroll');
                 bodyHtml.addClass("noscroll");
@@ -963,9 +968,9 @@
                 filterBody.removeClass('filter-body-scroll');
                 bodyHtml.removeClass("noscroll");
             }
-        }
+        }*/
 
-        function filterDisplay() {
+        /*function filterDisplay() {
             filterBody.css({
                 'height' : 'auto'
             });
@@ -978,9 +983,9 @@
                     fixedFilter();
                 });
             }
-        }
+        }*/
 
-        function fixedFilter() {
+        /*function fixedFilter() {
             if ($(window).scrollTop() > topOffset + 8) {
                 filter.addClass('filter-fixed');
                 rTableCol.addClass('top-padding');
@@ -990,21 +995,22 @@
                 filter.removeClass('filter-fixed');
                 rTableCol.removeClass('top-padding');
             }
-        }
+        }*/
 
 
 
         caretOpenFilter.click(function() {
             filterBody.toggle("slide");
             $(this).toggleClass("open");
-            filterOpenScroll();
+//            filterOpenScroll();
         });
 
-        filterDisplay();
-        $(window).on('resize', filterDisplay);
-        $(window).scroll();
+//        filterDisplay();
+//        $(window).on('resize', filterDisplay);
+//        $(window).scroll();
     });
 
+    //Skroll
     var cbpAnimatedHeader = (function () {
         var docElem = document.documentElement,
                 header = document.querySelector('.navbar-default'),
