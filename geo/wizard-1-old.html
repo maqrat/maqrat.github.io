@@ -13,15 +13,12 @@
 
     <link href="./node_modules/icheck/skins/square/_all.css" rel="stylesheet" type="text/css"/>
 
-    <link href="./node_modules/slick-carousel/slick/slick.css" rel="stylesheet" type="text/css"/>
-    <link href="./node_modules/slick-carousel/slick/slick-theme.css" rel="stylesheet" type="text/css"/>
-
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="top-navigation">
 
-<div class="navbar-wrapper navbar-wizard">
+<div class="navbar-wrapper">
     <nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
         <div class="navbar-bg"></div>
         <div class="container">
@@ -36,8 +33,10 @@
                 <a class="page-scroll navbar-brand" href="/app/"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
                 <a class=" btn btn-primary navy sign-up-btn-mobile visible-xs visible-sm" href="#">Sign Up</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-                <ul class="nav navbar-right">
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-top-links navbar-right">
+
+
                     <li class="dropdown">
                         <a href="#"
                            class="dropdown-toggle"
@@ -48,7 +47,7 @@
                             Admin
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="margin-right:10px">
                             <li><a href="/admin/">Database</a></li>
                             <li><a href="/admin-change-company">Change Company</a></li>
                             <li><a href="/billing/aws-charges">Amazon Charges</a></li>
@@ -57,6 +56,8 @@
                             <li><a href="/wizard/reset">Reset Wizard</a></li>
                         </ul>
                     </li>
+
+
                     <li class="dropdown">
                         <a href="#"
                            class="dropdown-toggle"
@@ -70,60 +71,43 @@
 
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="margin-right:10px">
                             <li><a href="/accounts/logout/">Logout</a></li>
                         </ul>
                     </li>
 
                 </ul>
-                <ul class="nav  navbar-nav nav-steps navbar-right">
-                    <li :class="steps[1]" class="active"><a href="#" @click.prevent="goToStep(1)">1. Select applications</a></li>
-                    <li :class="steps[2]" class="next"><a href="#" @click.prevent="goToStep(2)">2. Select storage</a></li>
-                    <li :class="steps[3]" class="disabled"><a href="#" @click.prevent="goToStep(3)">3. Review and activate</a></li>
-                    <li :class="steps[4]" class="disabled"><a href="#" @click.prevent="goToStep(4)">4. Finish</a></li>
-                </ul>
-
             </div>
         </div>
     </nav>
 </div>
 
-<div class="container-fluid container-brands-carousel container-brands-carousel-wizard">
-    <!--<div class="carousel-caption">
-        <h1 class="center-block">INDUSTRY LEADERS WORK WITH US</h1>
-    </div>-->
-    <div class="container-fluid">
-        <div class="brands-carousel">
-            <div><img src="img/brands/super-map-logo-w.png" alt="" class=""></div>
-            <div><img src="img/brands/agisoft_logo-w.png" alt="" class=""></div>
-            <div><img src="img/brands/bundle_adjustment-w.png" class="" alt=""></div>
-            <div><img src="img/brands/ic_logo-w.png" alt="" class=""></div>
-            <div><img src="img/brands/logo-racurs-w.png" alt="" class=""></div>
-            <div><img src="img/brands/acute3D_Logo.png" alt="" class=""></div>
-            <div><img src="img/brands/tatukGIS_logo_new.png" alt="" class=""></div>
-            <div><img src="img/brands/qgis_trademark.png" alt="" class=""></div>
-        </div>
-    </div>
-</div>
 
-<div id="wrapper" class="wrapper-wizard-content gray-bg">
-    <div class="container white-bg layer-bg"></div>
-    <div class="container top-table-back-layer"></div>
-    <div  id="app" class="wrapper wrapper-content wizard">
-        <div class="container white-bg">
+<div id="wrapper" class="gray-bg">
+    <div>
+        <div id="app" class="wrapper wrapper-content wizard white-bg" style="margin-top: 20px">
+
+            <h1>Welcome to GeoCloud</h1>
+
+            <ul class="nav nav-pills nav-justified">
+                <li :class="steps[1]"><a href="#" @click.prevent="goToStep(1)">1. Select applications</a></li>
+                <li :class="steps[2]"><a href="#" @click.prevent="goToStep(2)">2. Select storage</a></li>
+                <li :class="steps[3]"><a href="#" @click.prevent="goToStep(3)">3. Review and activate</a></li>
+                <li :class="steps[4]"><a href="#" @click.prevent="goToStep(4)">4. Finish</a></li>
+            </ul>
+
 
             <div style="display:none" v-show="true">
-                <div class="wizard-body">
-                    <div class="row wizard-container">
-
-                        <div class="col-md-3">
-                            <div class="filter wizard-filter">
+                <div class="row" style="margin: 20px -15px">
+                    <div class="col-md-3">
+                        <div class="">
+                            <div class="filter">
                                 <div class="filter-header hidden-lg hidden-md">
                                     <h3 class="fa-angle-down-cont">Filters <i id="" class="fa fa-angle-down visible-sm visible-xs" aria-hidden="true"></i>
                                     </h3>
                                 </div>
                                 <div class="filter-body" id="filters">
-                                    <div class="f1">
+                                    <div class="">
                                         <div class="chapter-header">
                                             <h4>
                                                 Companies
@@ -152,7 +136,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="f2">
+                                    <div class="">
                                         <div class="chapter-header">
                                             <h4>
                                                 Categories
@@ -183,117 +167,97 @@
                                         </ul>
                                     </div>
                                     <div class="col-xs-12 bottom-caret-row visible-sm visible-xs">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        <i id="" class="fa fa-angle-down" aria-hidden="true"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
-
-                            <div class="fixed-top-panel">
-
-                            </div>
-
-                            <div class="tab-content packages table-responsive">
-                                <div class="nav-tabs-row">
-                                    <div class="tabs-app-container">
-                                        <ul class="nav nav-tabs " role="tablist">
-                                            <li :class="{active: !showSelected}">
-                                                <a @click="showSelected = false">
-                                                    All Apps
-                                                    <span class="apps-amount">
-                                                        (${filteredApps.length} out of ${apps.length})
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li :class="{active: showSelected}">
-                                                <a @click="showSelected = true">My apps (${selectedApps.length})</a>
-                                            </li>
-                                        </ul>
-                                        <!--<p class="apps-amount">
-                                            Showing ${filteredApps.length}
-                                            ${'application'|pluralize(filteredApps.length)}
-                                            out of ${apps.length}
-                                        </p>-->
-                                    </div>
-                                    <div style="text-align: right" class="table-btns">
-                                        <button class="btn" disabled>
-                                            <span class="glyphicon glyphicon-chevron-left"></span>
-                                            Previous
-                                        </button>
-                                        <button
-                                                :disabled="steps[2] !== 'available'"
-                                                @click="goToStep(2)"
-                                                class="btn btn-primary">
-                                            Next
-                                            <span class="glyphicon glyphicon-chevron-right"></span>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="app-search-form"
-                                     v-for="app in (showSelected ? selectedApps : filteredApps)"
-                                     :class="{selected: app.selected}">
-                                    <form class="form-inline">
-                                        <input
-                                                :disabled="showSelected"
-                                                v-model="searchQuery"
-                                                class="form-control"
-                                                type="search"
-                                                placeholder="Search">
-                                        <span
-                                                style="margin-left: 5px"
-                                                v-for="company in filters.companies"
-                                                class="label label-primary">
+                    </div>
+                    <div class="col-md-9">
+                        <div style="margin: 10px 0 7px">
+                            <form class="form-inline">
+                                <input
+                                        :disabled="showSelected"
+                                        v-model="searchQuery"
+                                        class="form-control"
+                                        type="search"
+                                        placeholder="Search">
+                                <span
+                                    style="margin-left: 5px"
+                                    v-for="company in filters.companies"
+                                    class="label label-primary">
                                     ${company}
                                     <a @click="uncheckCompany(company)">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </span>
-                                        <span
-                                                style="margin-left: 5px"
-                                                v-for="category in filters.categories"
-                                                class="label label-warning">
+                                <span
+                                    style="margin-left: 5px"
+                                    v-for="category in filters.categories"
+                                    class="label label-warning">
                                     ${category}
                                     <a @click="uncheckCategory(category)">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </span>
-                                    </form>
-                                </div>
-
-                                <table class="table">
-                                    <tbody>
-                                    <tr v-for="app in (showSelected ? selectedApps : filteredApps)"
-                                        :class="{selected: app.selected}">
-                                        <td class="image-td">
-                                            <img :src="app.image">
-                                            <div class="size">${app.size}</div>
-                                        </td>
-                                        <td style="vertical-align: middle">
-                                            <b>${app.title}</b>
-                                            <br>${app.description}
-                                        </td>
-                                        <td class="price-td">
-                                            <h2>Price ${app.price|price}$ Per Hour</h2>
-                                            <button
-                                                    @click="toggleApp(app)"
-                                                    :disabled="app.processing"
-                                                    :class="{'btn-success': app.selected}"
-                                                    class="btn btn-price btn-block">
-                                                ${app.processing ? 'Selecting' : app.selected ? 'Selected' : 'Select'}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
+                            </form>
                         </div>
-                    </div>
 
+						<ul class="nav nav-tabs" role="tablist">
+                            <li :class="{active: !showSelected}">
+                                <a @click="showSelected = false">All Apps</a>
+                            </li>
+                            <li :class="{active: showSelected}">
+                                <a @click="showSelected = true">My apps (${selectedApps.length})</a>
+                            </li>
+						</ul>
+
+
+                        <div class="tab-content packages table-responsive">
+
+                            <table class="table">
+                                <tbody>
+                                <tr v-for="app in (showSelected ? selectedApps : filteredApps)"
+                                    :class="{selected: app.selected}">
+                                    <td class="image-td">
+                                        <img :src="app.image">
+                                        <div class="size">${app.size}</div>
+                                    </td>
+                                    <td style="vertical-align: middle">
+                                        <b>${app.title}</b>
+                                        <br>${app.description}
+                                    </td>
+                                    <td class="price-td">
+                                        <h2>Price ${app.price|price}$ Per Hour</h2>
+                                        <button
+                                                @click="toggleApp(app)"
+                                                :disabled="app.processing"
+                                                :class="{'btn-warning': app.selected}"
+                                                class="btn btn-primary btn-block">
+                                            ${app.processing ? 'Selecting' : app.selected ? 'Selected' : 'Select'}
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p style="text-align: center">
+                                Showing ${filteredApps.length}
+                                ${'application'|pluralize(filteredApps.length)}
+                                out of ${apps.length}
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
+                <!--<div style="text-align: right" class="table-btns">
+                    <button class="btn" disabled>Previous</button>
+                    <button
+                            :disabled="steps[2] !== 'available'"
+                            @click="goToStep(2)"
+                            class="btn btn-primary">
+                        Next
+                    </button>
+                </div>-->
             </div>
 
         </div>
@@ -306,64 +270,11 @@
 <script src="./node_modules/metismenu/dist/metisMenu.min.js"></script>
 <script src="./node_modules/vue/dist/vue.js"></script>
 <script src="./node_modules/icheck/icheck.min.js"></script>
-<script src="./node_modules/slick-carousel/slick/slick.min.js"></script>
 <script src="./node_modules/jquery.nicescroll/dist/jquery.nicescroll.js"></script>
 <script src="./js/niceScrollCustom.js"></script>
 <script >
     $(document).ready(function () {
-        //brands-carousel slick
-        setTimeout(function(){
-            $('.brands-carousel').animate({opacity: 1}, 300);
-        }, 500);
 
-        $('.brands-carousel').slick({
-            dots: false,
-            speed: 1000,
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 5000,
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 5,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 992,
-                    settings: {
-                        slidesToShow: 4,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 820,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
-
-        document.addEventListener('scroll', function (event) {
-//           $('.line').css('position', 'fixed');
-        }, true );
 
     });
 </script>
@@ -384,7 +295,7 @@
             computed: {
                 filteredApps: function () {
                     var vm = this,
-                            apps = vm.apps;
+                        apps = vm.apps;
                     apps = vm.filters.categories.length ? apps.filter(function (x) {
                         return vm.filters.categories.indexOf(x.software) !== -1;
                     }) : apps;
