@@ -34,7 +34,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="page-scroll navbar-brand" href="/app/"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
-                <a class=" btn btn-primary navy sign-up-btn-mobile visible-xs visible-sm" href="#">Sign Up</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                 <ul class="nav navbar-right">
@@ -109,8 +108,9 @@
                                     <div class="size">${app.size}</div>
                                 </td>
                                 <td style="vertical-align: middle">
-                                    <b>${app.title}</b>
-                                    <br>${app.description}
+                                    <b>${app.title}</b><span class="version"><small>v11.1.9.25134</small></span>
+                                    <br><span class="params">8CPU,15GB RAM, NVIDIA(4GB))</span>
+                                    <br><span class="description"><small>${app.description}</small> </span>
                                 </td>
                                 <td class="price-td">
                                     <h2>Price ${app.price|price}$ Per Hour</h2>
@@ -209,7 +209,6 @@
                 <div class="col-md-9">
 
                     <div class="tab-content">
-
                         <div class="nav-tabs-row">
                             <div class="tabs-app-container">
                                 <ul class="nav nav-tabs " role="tablist">
@@ -217,70 +216,47 @@
                                         <a @click="showSelected = false">
                                             Available Apps
                                             <span class="apps-amount">
-                                                        (${filteredApps.length} of ${apps.length})
-                                                    </span>
+                                                (${filteredApps.length} of ${apps.length})
+                                            </span>
                                         </a>
                                     </li>
-                                    <li :class="{active: showSelected}">
+                                    <li v-show="selectedApps.length" :class="{active: showSelected}">
                                         <a @click="showSelected = true">My Apps (${selectedApps.length})</a>
+                                    </li>
+                                    <li class=" pull-right">
+                                        <div class="app-search-form">
+                                            <form class="form-inline">
+                                                <input
+                                                v-model="searchQuery"
+                                                v-show="!showSelected"
+                                                class="form-control"
+                                                type="search"
+                                                placeholder="Search">
+                                            </form>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div v-if="!showSelected" class="app-search-form">
-                            <form class="form-inline">
-                                <input
-                                        v-model="searchQuery"
-                                        class="form-control"
-                                        type="search"
-                                        placeholder="Search">
-                                <span
-                                        v-for="company in filters.companies"
-                                        class="label label-primary">
+                        <div v-if="!showSelected" class="label-row">
+                        <span
+                                v-for="company in filters.companies"
+                                class="label label-primary">
                                         ${company}
                                         <a @click="uncheckCompany(company)">
                                             <i class="fa fa-times"></i>
                                         </a>
                                 </span>
-                                <span
-                                        v-for="category in filters.categories"
-                                        class="label label-success">
+                            <span
+                                    v-for="category in filters.categories"
+                                    class="label label-success">
                                         ${category}
                                         <a @click="uncheckCategory(category)">
                                             <i class="fa fa-times"></i>
                                         </a>
                                 </span>
-                            </form>
                         </div>
-
-                        <!--<div class="table-wizard">
-                            <table class="table">
-                                <tbody>
-                                <tr v-for="app in (showSelected ? selectedApps : filteredApps)"
-                                    :class="{selected: app.selected}">
-                                    <td class="image-td">
-                                        <img :src="app.image">
-                                        <div class="size">${app.size}</div>
-                                    </td>
-                                    <td style="vertical-align: middle">
-                                        <b>${app.title}</b>
-                                        <br>${app.description}
-                                    </td>
-                                    <td class="price-td">
-                                        <h2>Price ${app.price|price}$ Per Hour</h2>
-                                        <button
-                                                @click="toggleApp(app)"
-                                                :disabled="app.processing"
-                                                :class="{'btn-warning': app.selected}"
-                                                class="btn btn-price btn-block">
-                                            ${app.processing ? 'Selecting' : app.selected ? 'Selected' : 'Select'}
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>-->
                     </div>
 
                 </div>
@@ -313,9 +289,39 @@
 <script src="./node_modules/icheck/icheck.min.js"></script>
 <script src="./node_modules/slick-carousel/slick/slick.min.js"></script>
 <script src="./node_modules/jquery.nicescroll/dist/jquery.nicescroll.js"></script>
-<script src="./js/niceScrollCustom.js"></script>
+<!--<script src="./js/niceScrollCustom.js"></script>-->
+<script src="./node_modules/css-element-queries/src/ResizeSensor.js"></script>
+<script src="./node_modules/css-element-queries/src/ElementQueries.js"></script>
+<script src="./js/label-wizard-position.js"></script>
 <script >
+
     $(document).ready(function () {
+
+        function filterWizardHeightSet() {
+            var filterElement = $(".filter.wizard-filter .filter-body");
+
+            var filterElementF1List = $(".filter.wizard-filter .filter-body ul.list-unstyled.filter-body-1");
+            var filterElementF2List = $(".filter.wizard-filter .filter-body ul.list-unstyled.filter-body-2");
+
+            var filterChapterHeight = $(".chapter-header").outerHeight();
+            var navHeight = $(".navbar-wrapper nav").outerHeight();
+            var containerBrandsHeight = $(".container-brands-carousel-wizard").outerHeight();
+            var windowHeight = $(window).outerHeight();
+            var filterHeight = windowHeight - navHeight - containerBrandsHeight;
+
+
+            var filterF1Height = filterHeight * 0.4 - filterChapterHeight - 30;
+            var filterF2Height = filterHeight * 0.6 - filterChapterHeight - 30;
+
+            filterElement.css('height', filterHeight + 'px');
+
+            filterElementF1List.css('height', filterF1Height + 'px');
+            filterElementF2List.css('height', filterF2Height + 'px');
+        }
+
+        $(window).on('resize', filterWizardHeightSet);
+
+        filterWizardHeightSet();
 
         //brands-carousel slick
         setTimeout(function(){
@@ -371,9 +377,18 @@
 //           $('.line').css('position', 'fixed');
         }, true );
 
+        $('.f1, .f2').on( 'mousewheel DOMMouseScroll', function (e) {
+            var e0 = e.originalEvent;
+            var delta = e0.wheelDelta || -e0.detail;
+
+            this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+            //e.preventDefault();
+        });
+
     });
 </script>
 <script>
+
     (function (cfg) {
         window.vm = new Vue({
             el: '#app',
