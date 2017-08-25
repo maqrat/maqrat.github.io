@@ -20,6 +20,7 @@
 </head>
 
 <body class="gray-bg">
+<div id="app" style="display:none" v-show="true">
 
 <div class="navbar-wrapper navbar-wizard">
     <nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
@@ -91,7 +92,7 @@
     </nav>
 </div>
 
-<div id="app" class="gray-bg">
+<div class="gray-bg">
     <div class="container white-bg white-bg-back"></div>
 
     <div class="table-wizard-container">
@@ -99,7 +100,7 @@
             <div class="row wizard-row">
                 <div class="col-xs-offset-3 col-xs-9">
                     <div class="table-wizard packages table-responsive">
-                        <table class="table">
+                        <table v-if="!showSelected || selectedApps.length" class="table">
                             <tbody>
                             <tr v-for="app in (showSelected ? selectedApps : filteredApps)"
                                 :class="{selected: app.selected}">
@@ -109,8 +110,8 @@
                                 </td>
                                 <td style="vertical-align: middle">
                                     <b>${app.title}</b><span class="version"><small>v11.1.9.25134</small></span>
-                                    <br><span class="params">8CPU,15GB RAM, NVIDIA(4GB))</span>
-                                    <br><span class="description"><small>${app.description}</small> </span>
+                                    <span class="params">&ensp; 8CPU,15GB RAM, NVIDIA(4GB))</span>
+                                    <br><span class="description">${app.description}</span>
                                 </td>
                                 <td class="price-td">
                                     <h2>Price ${app.price|price}$ Per Hour</h2>
@@ -125,6 +126,9 @@
                             </tr>
                             </tbody>
                         </table>
+                        <div v-else style="text-align: center; color: gray; padding-top: 15px">
+                            Please, select you apps
+                        </div>
                     </div>
                 </div>
             </div>
@@ -220,7 +224,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li v-show="selectedApps.length" :class="{active: showSelected}">
+                                    <li :class="{active: showSelected}">
                                         <a @click="showSelected = true">My Apps (${selectedApps.length})</a>
                                     </li>
                                     <li class=" pull-right">
@@ -239,7 +243,7 @@
                             </div>
                         </div>
 
-                        <div v-if="!showSelected" class="label-row">
+                        <div v-show="!showSelected" class="label-row">
                         <span
                                 v-for="company in filters.companies"
                                 class="label label-primary">
@@ -281,6 +285,7 @@
         </div>
     </div>
 </div>
+</div>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -288,15 +293,11 @@
 <script src="./node_modules/vue/dist/vue.js"></script>
 <script src="./node_modules/icheck/icheck.min.js"></script>
 <script src="./node_modules/slick-carousel/slick/slick.min.js"></script>
-<script src="./node_modules/jquery.nicescroll/dist/jquery.nicescroll.js"></script>
-<!--<script src="./js/niceScrollCustom.js"></script>-->
-<script src="./node_modules/css-element-queries/src/ResizeSensor.js"></script>
-<script src="./node_modules/css-element-queries/src/ElementQueries.js"></script>
-<script src="./js/label-wizard-position.js"></script>
 <script >
 
     $(document).ready(function () {
 
+        //Filter % height
         function filterWizardHeightSet() {
             var filterElement = $(".filter.wizard-filter .filter-body");
 
@@ -322,6 +323,14 @@
         $(window).on('resize', filterWizardHeightSet);
 
         filterWizardHeightSet();
+
+        $('.f1, .f2').on( 'mousewheel DOMMouseScroll', function (e) {
+            var e0 = e.originalEvent;
+            var delta = e0.wheelDelta || -e0.detail;
+
+            this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+            //e.preventDefault();
+        });
 
         //brands-carousel slick
         setTimeout(function(){
@@ -377,19 +386,62 @@
 //           $('.line').css('position', 'fixed');
         }, true );
 
-        $('.f1, .f2').on( 'mousewheel DOMMouseScroll', function (e) {
-            var e0 = e.originalEvent;
-            var delta = e0.wheelDelta || -e0.detail;
-
-            this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-            //e.preventDefault();
-        });
-
     });
 </script>
 <script>
-
     (function (cfg) {
+
+        var stylesUpdater = (function () {
+
+            function tableWizardTopSet() {
+                var el = $('.label-row');
+                var elTableWizard = $(".table-wizard-container");
+                var labelBottom = el.offset().top + el.outerHeight(true);
+                elTableWizard.css("top", labelBottom + "px");
+            }
+
+            function labelsOrScreenChanged() {
+                var el = $('.label-row');
+                var elHeight = el.outerHeight();
+                var labelBottom = el.offset().top + elHeight;
+                if (elHeight <= '21') {
+                    el.css({
+                        "padding": "0",
+                        "border": "0"
+                    });
+                    tableWizardTopSet();
+                } else {
+                    el.css({
+                        "padding": "10px 0",
+                        "border-bottom": "1px solid #ddd"
+                    });
+                    tableWizardTopSet();
+                }
+            }
+
+            function tabChanged () {
+                var secondTab = $('.tabs-app-container ul li:nth-child(2)');
+                var elTableWizard = $(".table-wizard-container");
+                var varTab = $(".nav-tabs-row");
+                var varTabHeight = $(".nav-tabs-row").outerHeight();
+                var tabRowBottom = varTab.offset().top + varTabHeight;
+
+                if (secondTab.hasClass('active')) {
+                    elTableWizard.css("top", tabRowBottom - 1 + "px");
+                } else {
+                    tableWizardTopSet();
+                }
+            }
+
+            return {
+                labelsChanged: function() { setTimeout(labelsOrScreenChanged, 0) },
+                screenChanged: labelsOrScreenChanged,
+                tabChanged: function() { setTimeout(tabChanged, 0) }
+            };
+        })();
+
+        $(window).resize(stylesUpdater.screenChanged);
+
         window.vm = new Vue({
             el: '#app',
             delimiters: ['${', '}'],
@@ -497,9 +549,11 @@
                 filters: {
                     handler: function (val) {
                         // $.postJSON(cfg.urls.changeSoftwareFilter, {filters: val});
+                        stylesUpdater.labelsChanged();
                     },
                     deep: true
                 },
+                showSelected: stylesUpdater.tabChanged,
                 selectedApps: function (val) {
                     if (!val.length) {
                         this.showSelected = false;
